@@ -182,9 +182,12 @@ public struct CMUXMobileRootScene: View {
     /// mirrors `makePresenceClient()`.
     @MainActor
     private func makeBackedUpPairedMacStore() -> (any MobilePairedMacStoring)? {
-        guard let store = pairedMacStore else { return nil }
-        guard MobilePairedMacBackup.resolved().isEnabled,
-              let baseURL = PresenceClient.resolvedServiceBaseURL() else {
+        guard let store = pairedMacStore else { print("PMDIAG: makeBackedUp: no local store"); return nil }
+        let flag = MobilePairedMacBackup.resolved().isEnabled
+        let url = PresenceClient.resolvedServiceBaseURL()
+        print("PMDIAG: makeBackedUp flag=\(flag) url=\(url ?? "nil")")
+        guard flag, let baseURL = url else {
+            print("PMDIAG: makeBackedUp -> BARE store (backup disabled)")
             return store
         }
         let coordinator = auth.coordinator
