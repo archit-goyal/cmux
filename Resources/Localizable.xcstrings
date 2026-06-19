@@ -161829,13 +161829,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "cmux is running Time Profiler, SwiftUI, Allocations, and System Trace for %d seconds each. Finder stays closed while the capture records. When it finishes, cmux opens a submission draft with the profile attached."
+            "value": "cmux is running Time Profiler, SwiftUI, Allocations, and System Trace for %d seconds each. Finder stays closed while the capture records. Review the profile before opening the email draft."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "cmuxはTime Profiler、SwiftUI、Allocations、System Traceをそれぞれ%d秒ずつ実行しています。記録中はFinderを開きません。完了すると、プロファイルを添付した送信用の下書きを開きます。"
+            "value": "cmuxはTime Profiler、SwiftUI、Allocations、System Traceをそれぞれ%d秒ずつ実行しています。記録中はFinderを開きません。メール下書きを開く前にプロファイルを確認してください。"
           }
         }
       }
@@ -162023,6 +162023,465 @@
           "stringUnit": {
             "state": "translated",
             "value": "閉じる"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.reviewTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Capture a cmux profile"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "cmuxプロファイルをキャプチャ"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.permissionTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Why macOS may ask for permission"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOSが権限を求める理由"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.permissionExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS may ask for administrator permission because Instruments attaches to the running cmux process and samples its threads. cmux uses that access only to create this diagnostic profile."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instrumentsが実行中のcmuxプロセスに接続してスレッドをサンプリングするため、macOSが管理者権限を求める場合があります。cmuxはこの診断プロファイルの作成にのみその権限を使います。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.emailLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your email"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メールアドレス"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.emailPlaceholder": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "you@example.com"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "you@example.com"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.invalidEmail": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a valid email address so we can follow up."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "返信できるように有効なメールアドレスを入力してください。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.noteLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anything else we should know?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "補足情報"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.previewLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review before sending"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "送信前に確認"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.previewWaiting": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The preview will appear here after the profiler writes the capture folder."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プロファイラがキャプチャフォルダを書き出すと、ここにプレビューが表示されます。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.previewRecipient": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recipient: founders@manaflow.com"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "宛先: founders@manaflow.com"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.previewEmailFormat": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your email: %@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メールアドレス: %@"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.previewAttachmentFormat": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attachment source: %@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添付元: %@"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.previewArchiveNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The draft attaches a zip of this folder, including traces, logs, and summary.md."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下書きには、このフォルダのzipが添付されます。トレース、ログ、summary.mdが含まれます。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.previewSummaryHeader": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "summary.md preview:"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "summary.mdプレビュー:"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.filesHeader": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files:"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ファイル:"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.filesUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files: unavailable"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ファイル: 取得できません"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.filesEmpty": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files: none yet"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ファイル: まだありません"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.folderSize": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "folder"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "フォルダ"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.summaryMissing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "summary.md is not available yet."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "summary.mdはまだ利用できません。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.readyToReview": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review the summary and files below, add context, then open the email draft."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下の概要とファイルを確認し、補足情報を追加してからメール下書きを開いてください。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.openDraft": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Email Draft"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メール下書きを開く"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.openingDraft": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opening..."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開いています..."
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.openingDraftStatus": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Packaging the profile and opening an email draft."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プロファイルをパッケージ化し、メール下書きを開いています。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.draftOpened": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The email draft is open."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メール下書きを開きました。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.draftFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The email draft could not be opened."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メール下書きを開けませんでした。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.submitterMissing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The bundled profile submission helper is missing."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "同梱のプロファイル送信ヘルパーが見つかりません。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.submitLaunchFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to open the email draft."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メール下書きを開けません。"
           }
         }
       }
