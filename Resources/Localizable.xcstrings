@@ -161789,6 +161789,244 @@
         }
       }
     },
+    "statusMenu.profiling.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profiling cmux"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "cmuxをプロファイリング中"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.remainingFormat": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About %d seconds remaining"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "残り約%d秒"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.bodyFormat": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "cmux is running Time Profiler, SwiftUI, Allocations, and System Trace for %d seconds each. Finder stays closed while the capture records. When it finishes, cmux opens a submission draft with the profile attached."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "cmuxはTime Profiler、SwiftUI、Allocations、System Traceをそれぞれ%d秒ずつ実行しています。記録中はFinderを開きません。完了すると、プロファイルを添付した送信用の下書きを開きます。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.starting": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting Instruments..."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instrumentsを起動中..."
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.running": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recording CPU, SwiftUI, memory, and system traces in the background."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CPU、SwiftUI、メモリ、システムトレースをバックグラウンドで記録しています。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.finalizing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finalizing traces..."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "トレースを仕上げています..."
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.completeTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Capture complete"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "キャプチャが完了しました"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.completeBody": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The profile archive is ready. cmux is opening the submission draft now."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プロファイルアーカイブの準備ができました。cmuxが送信用の下書きを開いています。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.failedTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profiling failed"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プロファイリングに失敗しました"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.failedBody": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The capture did not finish. If a folder was created, it may contain partial logs."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "キャプチャが完了しませんでした。フォルダが作成されている場合は、部分的なログが含まれている可能性があります。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.scriptMissing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The bundled profiling script is missing."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "同梱のプロファイリングスクリプトが見つかりません。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.launchFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to start profiling."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プロファイリングを開始できません。"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.openFolder": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Folder"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "フォルダを開く"
+          }
+        }
+      }
+    },
+    "statusMenu.profiling.close": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "閉じる"
+          }
+        }
+      }
+    },
     "taskManager.windowTitle": {
       "extractionState": "manual",
       "localizations": {
