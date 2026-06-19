@@ -2506,17 +2506,21 @@ public final class MobileShellComposite: MobileTerminalOutputSinking {
     private func fetchSecondaryWorkspaceList(for mac: MobilePairedMac) async -> [MobileWorkspacePreview]? {
         guard let runtime else { return nil }
         let supportedKinds = runtime.supportedRouteKinds
+        print("PMDIAG: fetchSecondary mac=\(mac.macDeviceID) routes=\(mac.routes.map { "\($0.id):\($0.endpoint)" })")
         guard let (host, port) = Self.firstReconnectHostPortRoute(
             mac.routes,
             supportedKinds: supportedKinds,
             preferNonLoopback: Self.prefersNonLoopbackRoutes
         ) else {
+            print("PMDIAG: fetchSecondary mac=\(mac.macDeviceID) NO ROUTE (supportedKinds=\(supportedKinds))")
             return nil
         }
+        print("PMDIAG: fetchSecondary mac=\(mac.macDeviceID) dialing \(host):\(port)")
         let ticket: CmxAttachTicket
         do {
             ticket = try await manualHostTicket(name: mac.displayName ?? host, host: host, port: port)
         } catch {
+            print("PMDIAG: fetchSecondary mac=\(mac.macDeviceID) TICKET FAILED \(String(describing: error))")
             mobileShellLog.warning(
                 "secondary workspace fetch: ticket failed mac=\(mac.macDeviceID, privacy: .public) error=\(String(describing: error), privacy: .public)"
             )
@@ -2538,12 +2542,14 @@ public final class MobileShellComposite: MobileTerminalOutputSinking {
                 timeoutNanoseconds: runtime.pairingRequestTimeoutNanoseconds
             )
             let response = try MobileSyncWorkspaceListResponse.decode(resultData)
+            print("PMDIAG: fetchSecondary mac=\(mac.macDeviceID) OK workspaces=\(response.workspaces.count)")
             return response.workspaces.map { remote in
                 var workspace = MobileWorkspacePreview(remote: remote)
                 workspace.macDeviceID = mac.macDeviceID
                 return workspace
             }
         } catch {
+            print("PMDIAG: fetchSecondary mac=\(mac.macDeviceID) LIST FAILED \(String(describing: error))")
             mobileShellLog.warning(
                 "secondary workspace fetch failed mac=\(mac.macDeviceID, privacy: .public) error=\(String(describing: error), privacy: .public)"
             )
@@ -2555,8 +2561,10 @@ public final class MobileShellComposite: MobileTerminalOutputSinking {
     /// is NOT the foreground connection, into `secondaryWorkspacesByMac` (P3).
     /// Best-effort and additive; does not publish into `workspaces` yet.
     func refreshSecondaryMacWorkspaces() async {
-        guard let pairedMacStore else { return }
+        guard let pairedMacStore else { print("PMDIAG: refreshSecondary: no pairedMacStore"); return }
         let account = identityProvider?.currentUserID
+        let refreshable = pairedMacStore is PairedMacBackupRefreshing
+        print("PMDIAG: refreshSecondary start account=\(account ?? "nil") refreshableStore=\(refreshable)")
         // Pull the authoritative backup first so a secondary Mac that relaunched
         // on a new port has its route refreshed locally (LWW by lastSeenAt; the
         // live foreground route is never clobbered). Without this the once-per-
@@ -2566,6 +2574,7 @@ public final class MobileShellComposite: MobileTerminalOutputSinking {
             await refresher.refreshFromBackup(stackUserID: account)
         }
         let macs = (try? await pairedMacStore.loadAll(stackUserID: account)) ?? []
+        print("PMDIAG: refreshSecondary macs=\(macs.count) ids=\(macs.map(\.macDeviceID)) fg=\(foregroundMacDeviceID ?? "nil")")
         for mac in macs where !mac.macDeviceID.isEmpty && mac.macDeviceID != foregroundMacDeviceID {
             if let previews = await fetchSecondaryWorkspaceList(for: mac) {
                 secondaryWorkspacesByMac[mac.macDeviceID] = previews
@@ -2598,6 +2607,7 @@ public final class MobileShellComposite: MobileTerminalOutputSinking {
     /// secondary workspaces, so the single-Mac list is byte-for-byte unchanged.
     /// De-dups by workspace id (foreground wins) and preserves per-Mac order.
     private func publishAggregatedWorkspaces() {
+        print("PMDIAG: publishAggregated enabled=\(Self.multiMacAggregationEnabled) secondaryKeys=\(Array(secondaryWorkspacesByMac.keys)) fgWorkspaces=\(workspaces.count)")
         guard Self.multiMacAggregationEnabled, !secondaryWorkspacesByMac.isEmpty else { return }
         var merged = workspaces.filter { $0.macDeviceID == foregroundMacDeviceID || $0.macDeviceID == nil }
         var seen = Set(merged.map(\.id))
@@ -3572,6 +3582,7 @@ public final class MobileShellComposite: MobileTerminalOutputSinking {
                     // Aggregate the user's other Macs' workspaces in the
                     // background (no-op / off in Release). Best-effort; never
                     // blocks the foreground connect.
+                    print("PMDIAG: post-attach fg=\(ticket.macDeviceID) aggEnabled=\(Self.multiMacAggregationEnabled)")
                     if Self.multiMacAggregationEnabled {
                         Task { [weak self] in await self?.refreshSecondaryMacWorkspaces() }
                     }
