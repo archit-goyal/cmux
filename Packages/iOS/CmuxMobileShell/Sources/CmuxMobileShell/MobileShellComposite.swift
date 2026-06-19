@@ -2555,8 +2555,10 @@ public final class MobileShellComposite: MobileTerminalOutputSinking {
     /// is NOT the foreground connection, into `secondaryWorkspacesByMac` (P3).
     /// Best-effort and additive; does not publish into `workspaces` yet.
     func refreshSecondaryMacWorkspaces() async {
-        guard let pairedMacStore else { return }
+        guard let pairedMacStore else { print("PMDIAG: refreshSecondary: no pairedMacStore"); return }
         let account = identityProvider?.currentUserID
+        let refreshable = pairedMacStore is PairedMacBackupRefreshing
+        print("PMDIAG: refreshSecondary start account=\(account ?? "nil") refreshableStore=\(refreshable)")
         // Pull the authoritative backup first so a secondary Mac that relaunched
         // on a new port has its route refreshed locally (LWW by lastSeenAt; the
         // live foreground route is never clobbered). Without this the once-per-
@@ -2566,6 +2568,7 @@ public final class MobileShellComposite: MobileTerminalOutputSinking {
             await refresher.refreshFromBackup(stackUserID: account)
         }
         let macs = (try? await pairedMacStore.loadAll(stackUserID: account)) ?? []
+        print("PMDIAG: refreshSecondary macs=\(macs.count) ids=\(macs.map(\.macDeviceID)) fg=\(foregroundMacDeviceID ?? "nil")")
         for mac in macs where !mac.macDeviceID.isEmpty && mac.macDeviceID != foregroundMacDeviceID {
             if let previews = await fetchSecondaryWorkspaceList(for: mac) {
                 secondaryWorkspacesByMac[mac.macDeviceID] = previews
@@ -3572,6 +3575,7 @@ public final class MobileShellComposite: MobileTerminalOutputSinking {
                     // Aggregate the user's other Macs' workspaces in the
                     // background (no-op / off in Release). Best-effort; never
                     // blocks the foreground connect.
+                    print("PMDIAG: post-attach fg=\(ticket.macDeviceID) aggEnabled=\(Self.multiMacAggregationEnabled)")
                     if Self.multiMacAggregationEnabled {
                         Task { [weak self] in await self?.refreshSecondaryMacWorkspaces() }
                     }
